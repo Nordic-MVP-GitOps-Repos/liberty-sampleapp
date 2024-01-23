@@ -31,8 +31,11 @@
                   httpPort="9080"
                   httpsPort="9443" />
 
-    <!-- Automatically expand WAR files and EAR files -->
-    <applicationManager autoExpand="true"/>
+    <application id="libertysample"
+                context-root="libertysample" 
+                type="war" 
+                location="liberty-sampleapp-1.0-SNAPSHOT.war" 
+                name="libertysample"/>
 
     <!-- Default SSL configuration enables trust for default certificates from the Java runtime -->
     <ssl id="defaultSSLConfig" trustDefaultCerts="true" />
