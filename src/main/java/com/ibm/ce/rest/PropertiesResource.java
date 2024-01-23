@@ -13,6 +13,7 @@ public class PropertiesResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Properties getProperties() {
+        System.getProperties().add("new", "value");
         return System.getProperties();
     }
 }
