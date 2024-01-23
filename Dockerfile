@@ -1,6 +1,10 @@
 FROM icr.io/appcafe/websphere-liberty:kernel-java8-ibmjava-ubi
 
-RUN yum install unzip && wget https://www.yourkit.com/download/docker/YourKit-JavaProfiler-2023.9-docker.zip -P /tmp/ && \
+USER root
+RUN yum install unzip
+USER 1001
+
+RUN wget https://www.yourkit.com/download/docker/YourKit-JavaProfiler-2023.9-docker.zip -P /tmp/ && \
   unzip /tmp/YourKit-JavaProfiler-2023.9-docker.zip -d /usr/local && \
   rm /tmp/YourKit-JavaProfiler-2023.9-docker.zip
 
