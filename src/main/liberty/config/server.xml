@@ -28,27 +28,31 @@
 
     <!-- To access this server from a remote client add a host attribute to the following element, e.g. host="*" -->
     <httpEndpoint id="defaultHttpEndpoint"
-                  httpPort="9080"
-                  httpsPort="9443" />
+                host="*"
+                httpPort="9080"
+                httpsPort="9443" />
 
-    <!--   
+    <iiopEndpoint id="defaultIiopEndpoint" iiopPort="2809" host="0.0.0.0">
+        <iiopsOptions iiopsPort="9402" host="0.0.0.0" sslRef="defaultSSLConfig"/>
+    </iiopEndpoint>
+
+    <orb id="defaultOrb" iiopEndpointRef="defaultIiopEndpoint">
+        <serverPolicy.csiv2>
+            <layers>
+                <authenticationLayer establishTrustInClient="Never"/>
+                <transportLayer sslEnabled="false"/>
+            </layers>
+        </serverPolicy.csiv2>
+    </orb>
+    
     <application id="libertysample"
                 context-root="libertysample" 
                 type="war" 
                 location="liberty-sampleapp-1.0-SNAPSHOT.war" 
                 name="libertysample"/>
-    -->
-    <!-- Default SSL configuration enables trust for default certificates from the Java runtime -->
+                
     <ssl id="defaultSSLConfig" trustDefaultCerts="true" />
 
-    <orb id="defaultOrb">
-        <clientPolicy.csiv2>
-            <layers>
-                <authenticationLayer establishTrustInClient="Never"/>
-                <transportLayer sslEnabled="false"/>
-            </layers>
-        </clientPolicy.csiv2>
-    </orb>
-
     <logging traceSpecification="yoko.verbose=all"/>
+
 </server>
