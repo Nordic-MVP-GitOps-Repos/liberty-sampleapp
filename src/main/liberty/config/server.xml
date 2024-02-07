@@ -35,6 +35,15 @@
     <iiopEndpoint id="defaultIiopEndpoint" iiopPort="2809" host="0.0.0.0">
         <iiopsOptions iiopsPort="9402" host="0.0.0.0" sslRef="defaultSSLConfig"/>
     </iiopEndpoint>
+
+    <orb id="defaultOrb" iiopEndpointRef="defaultIiopEndpoint">
+        <serverPolicy.csiv2>
+            <layers>
+                <authenticationLayer establishTrustInClient="Never"/>
+                <transportLayer sslEnabled="false"/>
+            </layers>
+        </serverPolicy.csiv2>
+    </orb>
     
     <application id="libertysample"
                 context-root="libertysample" 
