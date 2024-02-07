@@ -32,10 +32,6 @@
                 httpPort="9080"
                 httpsPort="9443" />
 
-    <iiopEndpoint id="defaultIiopEndpoint" iiopPort="2809" host="localhost">
-        <iiopsOptions iiopsPort="9402" sslRef="defaultSSLConfig"/>
-    </iiopEndpoint>
-
     <application id="libertysample"
                 context-root="libertysample" 
                 type="war" 
