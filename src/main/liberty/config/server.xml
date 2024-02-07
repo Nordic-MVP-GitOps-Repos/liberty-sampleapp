@@ -5,6 +5,7 @@
     <featureManager>
         <feature>jakartaee-8.0</feature>
         <feature>microProfile-4.1</feature>
+        <feature>ejbRemote-3.2</feature>
     </featureManager>
 
     <!-- This template enables security. To get the full use of all the capabilities, a keystore and user registry are required. -->
@@ -12,9 +13,8 @@
     <!-- For the keystore, default keys are generated and stored in a keystore. To provide the keystore password, generate an 
         encoded password using bin/securityUtility encode and add it below in the password attribute of the keyStore element. 
         Then uncomment the keyStore element. -->
-    <!--
-    <keyStore password=""/> 
-    -->
+    
+    <keyStore id="defaultKeyStore" password="password" />
 
     <!--For a user registry configuration, configure your user registry. For example, configure a basic user registry using the
         basicRegistry element. Specify your own user name below in the name attribute of the user element. For the password,
@@ -31,12 +31,24 @@
                   httpPort="9080"
                   httpsPort="9443" />
 
+    <!--   
     <application id="libertysample"
                 context-root="libertysample" 
                 type="war" 
                 location="liberty-sampleapp-1.0-SNAPSHOT.war" 
                 name="libertysample"/>
-
+    -->
     <!-- Default SSL configuration enables trust for default certificates from the Java runtime -->
     <ssl id="defaultSSLConfig" trustDefaultCerts="true" />
+
+    <orb id="defaultOrb">
+        <clientPolicy.csiv2>
+            <layers>
+                <authenticationLayer establishTrustInClient="Never"/>
+                <transportLayer sslEnabled="false"/>
+            </layers>
+        </clientPolicy.csiv2>
+    </orb>
+
+    <logging traceSpecification="yoko.verbose=all"/>
 </server>
