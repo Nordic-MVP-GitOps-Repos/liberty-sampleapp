@@ -19,8 +19,9 @@ repositories {
 
 dependencies {
     // provided dependencies
-    providedCompile 'jakarta.platform:jakarta.jakartaee-api:8.0.0' 
-    providedCompile 'cglib:cglib:3.3.0'
+    providedCompile 'jakarta.platform:jakarta.jakartaee-api:8.0.0'
+    //providedCompile 'jakarta.xml.ws:jakarta.xml.ws-api:2.3.3'
+    providedCompile 'javax.jws:javax.jws-api:1.1'
     //providedCompile 'org.eclipse.microprofile:microprofile:4.1' 
 
 }
