@@ -21,6 +21,7 @@ dependencies {
     // provided dependencies
     providedCompile 'jakarta.platform:jakarta.jakartaee-api:8.0.0'
     providedCompile 'javax.jws:javax.jws-api:1.1'
+    providedCompile 'javax.xml.bind:jaxb-api:2.2.4'
     //providedCompile 'org.eclipse.microprofile:microprofile:4.1' 
 }
 
