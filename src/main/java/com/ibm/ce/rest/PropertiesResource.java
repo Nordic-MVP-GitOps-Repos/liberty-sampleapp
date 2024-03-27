@@ -24,6 +24,8 @@ public class PropertiesResource {
 
         System.out.println("TimeService: " + timeService.getTime());
         System.getProperties().put("new", "value");
+        System.getProperties().put("injected EJB", timeService.getClass().getName());
+
         return System.getProperties();
     }
 }
