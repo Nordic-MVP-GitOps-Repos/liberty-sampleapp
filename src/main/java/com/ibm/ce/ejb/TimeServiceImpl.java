@@ -1,5 +1,9 @@
 package com.ibm.ce.ejb;
 
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.temporal.TemporalAmount;
 import java.util.Date;
 
 import javax.ejb.Local;
@@ -28,13 +32,18 @@ public class TimeServiceImpl implements TimeService {
     @GET()
     @Path("yesterday")
     public Date getYesterday() {
-        return new Date();
+        LocalDate yesterday = LocalDate.now();
+        yesterday.minusDays(1L);
+        Instant instant = Instant.from(yesterday.atStartOfDay(ZoneId.of("GMT")));
+        return Date.from(instant);
     }
     
     @Override
     @GET()
     @Path("tomorrow")
     public Date getTomorrow() {
-        return new Date();
-    }
+        LocalDate tomorrow = LocalDate.now();
+        tomorrow.plusDays(1L);
+        Instant instant = Instant.from(tomorrow.atStartOfDay(ZoneId.of("GMT")));
+        return Date.from(instant);    }
 }
