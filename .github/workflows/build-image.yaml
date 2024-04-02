@@ -2,8 +2,10 @@ name: Build Liberty image with war file
 run-name: ${{ github.actor }} triggered build
 on: [push]
 jobs:
-  build-war-file:
+  build-image-with-war-file:
     # Default token permissions
+    # See: https://docs.github.com/en/packages/learn-github-packages/configuring-a-packages-access-control-and-visibility#configuring-access-to-packages-for-an-organization
+    # See: https://docs.github.com/en/packages/learn-github-packages/connecting-a-repository-to-a-package 
     permissions:
       packages: write
     runs-on: ubuntu-latest
@@ -21,7 +23,6 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          #password: ${{ secrets.WRITE_PACKAGES }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and push Docker image
         uses: docker/build-push-action@f2a1d5e99d037542a71f64918e516c093c6f3fc4
