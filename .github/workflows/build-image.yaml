@@ -8,8 +8,12 @@ jobs:
       contents: write
       packages: write
     runs-on: ubuntu-latest
+    container: 
+      image: icr.io/appcafe/websphere-liberty:kernel-java8-ibmjava-ubi
+      env:
+        USERNAME: ${{ github.actor }}
+        TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
-    
       # Clone repository
       - uses: actions/checkout@v4
       # Run the gradle build to create the war file using the gradle wrapper
