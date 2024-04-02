@@ -9,7 +9,7 @@ jobs:
       packages: write
     runs-on: ubuntu-latest
     container: 
-      image: icr.io/appcafe/websphere-liberty:kernel-java8-ibmjava-ubi
+      image: icr.io/appcafe/websphere-liberty:full-java8-ibmjava-ubi
       env:
         USERNAME: ${{ github.actor }}
         TOKEN: ${{ secrets.GITHUB_TOKEN }}
