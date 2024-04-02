@@ -5,7 +5,6 @@ jobs:
   build-war-file:
     # Default token permissions
     permissions:
-      metadata: write
       packages: write
     runs-on: ubuntu-latest
     steps:
