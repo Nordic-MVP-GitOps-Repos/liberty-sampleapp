@@ -1,9 +1,6 @@
 package com.ibm.ce.ejb;
 
 import java.time.Instant;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.temporal.TemporalAmount;
 import java.util.Date;
 
 import javax.ejb.Local;
@@ -20,7 +17,9 @@ import javax.ws.rs.core.MediaType;
 @Path("time")
 @Produces(MediaType.APPLICATION_JSON)
 public class TimeServiceImpl implements TimeService {
-    
+
+    private static final long SECONDS_IN_24HRS = 24*60*60L;
+
     @Override
     @GET
     @Path("now")
@@ -32,9 +31,8 @@ public class TimeServiceImpl implements TimeService {
     @GET()
     @Path("yesterday")
     public Date getYesterday() {
-        LocalDate yesterday = LocalDate.now();
-        yesterday.minusDays(1L);
-        Instant instant = Instant.from(yesterday.atStartOfDay(ZoneId.of("GMT")));
+        Instant instant = Instant.now();
+        instant = instant.minusSeconds(SECONDS_IN_24HRS);
         return Date.from(instant);
     }
     
@@ -42,8 +40,8 @@ public class TimeServiceImpl implements TimeService {
     @GET()
     @Path("tomorrow")
     public Date getTomorrow() {
-        LocalDate tomorrow = LocalDate.now();
-        tomorrow.plusDays(1L);
-        Instant instant = Instant.from(tomorrow.atStartOfDay(ZoneId.of("GMT")));
-        return Date.from(instant);    }
+        Instant instant = Instant.now();
+        instant = instant.plusSeconds(SECONDS_IN_24HRS);
+        return Date.from(instant);
+    }
 }
