@@ -1,0 +1,20 @@
+name: Build Liberty image with war file
+run-name: ${{ github.actor }} triggered build
+on: [push]
+jobs:
+  build-war-file:
+    # Default token permissions
+    permissions:
+      contents: write
+      packages: write
+    runs-on: ubuntu-latest
+    steps:
+    
+      # Clone repository
+      - uses: actions/checkout@v4
+      # Run the gradle build to create the war file using the gradle wrapper
+      # The build creates the war file
+      - name: gradlew-build-and-publish-barfile
+        run: |
+          ./gradlew --no-daemon
+          cp build/*.war .
