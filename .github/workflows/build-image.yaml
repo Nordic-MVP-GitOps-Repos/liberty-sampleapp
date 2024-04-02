@@ -16,5 +16,5 @@ jobs:
       # The build creates the war file
       - name: gradlew-build-and-publish-barfile
         run: |
-          ./gradlew --no-daemon
-          cp build/*.war .
+          ./gradlew --no-daemon war
+          cp build/libs/*.war .
