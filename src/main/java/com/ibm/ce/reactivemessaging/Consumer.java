@@ -11,7 +11,15 @@ public class Consumer {
      * Consume from DOOR.BADGEIN Kafka Topic
      */
     @Incoming("door")
-    public void consume(String string)  {
-        System.out.println("Received message: " + string);
+    public void consumeDoorEvents(String string)  {
+        System.out.println("Received door event: " + string);
+    }
+
+    /**
+     * Consume from DOOR.BADGEIN Kafka Topic
+     */
+    @Incoming("order")
+    public void consumeOrderEvents(String string)  {
+        System.out.println("Received order event: " + string);
     }
 }
