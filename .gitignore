@@ -1,3 +1,6 @@
+# Local settings for running liberty
+**server.env
+
 # Compiled class file
 *.class
 

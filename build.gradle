@@ -20,9 +20,11 @@ repositories {
 dependencies {
     // provided dependencies
     providedCompile 'jakarta.platform:jakarta.jakartaee-api:8.0.0'
+    providedCompile 'org.eclipse.microprofile:microprofile:4.1' 
+    providedCompile 'org.eclipse.microprofile.reactive.messaging:microprofile-reactive-messaging-api:1.0'
     providedCompile 'javax.jws:javax.jws-api:1.1'
     providedCompile 'javax.xml.bind:jaxb-api:2.2.4'
-    //providedCompile 'org.eclipse.microprofile:microprofile:4.1' 
+    implementation 'org.apache.kafka:kafka-clients:3.7.0'
 }
 
 clean.dependsOn 'libertyStop'

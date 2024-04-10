@@ -4,8 +4,9 @@
     <!-- Enable features -->
     <featureManager>
         <feature>jakartaee-8.0</feature>
+        <feature>microProfile-1.4</feature>
+        <feature>mpReactiveMessaging-1.0</feature>
         <feature>ejbRemote-3.2</feature>
-        <feature>microProfile-4.1</feature>
         <feature>jaxws-2.2</feature>
     </featureManager>
 
@@ -43,7 +44,9 @@
                 
     <ssl id="defaultSSLConfig" trustDefaultCerts="true" />
 
-    <logging traceSpecification="yoko.verbose=all"/>
+    <!--logging traceSpecification="yoko.verbose=all"/-->
+
+    <!--logging traceSpecification="com.ibm.ws.microprofile.config.impl.*=all"/-->
 
     <applicationManager autoExpand="true"/>
 

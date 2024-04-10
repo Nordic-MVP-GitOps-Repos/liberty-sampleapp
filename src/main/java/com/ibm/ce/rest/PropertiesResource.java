@@ -8,7 +8,6 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-
 import com.ibm.ce.ejb.TimeService;
 
 @Stateless
@@ -21,7 +20,7 @@ public class PropertiesResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Properties getProperties() {
-
+  
         System.out.println("TimeService: " + timeService.getTime());
         System.getProperties().put("new", "value");
         System.getProperties().put("injected EJB", timeService.getClass().getName());
