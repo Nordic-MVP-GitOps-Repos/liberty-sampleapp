@@ -10,16 +10,16 @@ import com.ibm.ce.jms.Producer;
 @ApplicationScoped
 public class Consumer {
 
-    @EJB
-    Producer jmsProducer;
+    //@EJB
+    //Producer jmsProducer;
 
     /**
      * Consume from DOOR.BADGEIN Kafka Topic
      */
     @Incoming("door")
     public void consumeDoorEvents(String string) throws Exception {
-        System.out.println("Received door event: " + string);
-        jmsProducer.sendMessage(string);
+        System.out.println("Received door event:  " + string);
+        //jmsProducer.sendMessage(string);
     }
 
     /**

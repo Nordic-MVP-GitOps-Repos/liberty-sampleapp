@@ -20,7 +20,7 @@ public class Producer {
     public void sendMessage(String message) {
         context.createProducer().send(queue, message);
         try {
-            System.out.println("Sent message.");            
+            System.out.println("Sent messages.");            
         } catch (Exception e) {
             e.printStackTrace();
         }

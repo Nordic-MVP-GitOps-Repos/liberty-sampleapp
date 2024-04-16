@@ -22,7 +22,8 @@
     <jmsConnectionFactory jndiName="jms/mqConnectionFactory" connectionManagerRef="connectionManager">
         <properties.wmqjmsra
             channel="${channel}"
-            hostName="${hostname}"   
+            hostName="${hostname}"
+            sslCipherSuite="ANY_TLS12_OR_HIGHER"   
             port="${port}"
             queueManager="${queuemanager}"
             transportType="CLIENT"
