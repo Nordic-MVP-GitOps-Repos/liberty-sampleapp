@@ -13,21 +13,20 @@ import com.ibm.ce.jms.Producer;
 @ApplicationScoped
 public class Consumer {
 
-    //@EJB
-    //Producer jmsProducer;
-
+    @EJB
+    Producer jmsProducer;
+    
     // https://smallrye.io/smallrye-reactive-messaging/4.9.0/kafka/receiving-kafka-records/#acknowledgement
     @Incoming("door")
     @Acknowledgment(Acknowledgment.Strategy.NONE)
-    public void consumeDoorEvents(String string) {
+    public void consumeDoorEvents(String string) {    
         System.out.println("Received door event: " + string);  
-        
-        /* 
+    
         try {
-            jmsProducer.sendMessage(message.getPayload());
+            jmsProducer.sendMessage(string);
         } catch (Exception e) {
             e.printStackTrace();
-        }*/
+        }
     } 
       
     /**

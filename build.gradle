@@ -38,8 +38,13 @@ dependencies {
     implementation 'org.apache.kafka:kafka-clients:3.7.0'
     implementation 'com.ibm.mq:wmq.jmsra:9.3.5.0'
     implementation 'org.slf4j:slf4j-simple:1.7.36'
+
+    testImplementation 'com.ibm.mq:com.ibm.mq.allclient:9.3.5.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.10.2'
 }
 
 clean.dependsOn 'libertyStop'
+
+libertyDev.dependsOn 'copyMQToLibertyLib'
 
 defaultTasks 'build', 'copyMQToLibertyLib'

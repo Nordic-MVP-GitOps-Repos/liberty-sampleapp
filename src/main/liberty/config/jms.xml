@@ -5,25 +5,19 @@
 
     <connectionManager id="connectionManager" maxPoolSize="10"/>
 
+    <variable name="hostname" value="native-ha-qm-ibm-mq-qm-mq.apps.6602d6121b0194001e821256.cloud.techzone.ibm.com"/>
+    <variable name="port" value="443"/>
     <variable name="queuemanager" value="NATIVEHAQM" />
     <variable name="channel" value="HAQMCHL"/>
-    <!--
-    <variable name="hostname" value="native-ha-qm-ibm-mq.mq.svc.cluster.local"/>
-    <variable name="port" value="1414"/>
-    -->
 
-    <variable name="hostname" value="native-ha-qm-ibm-mq-web-mq.apps.6602d6121b0194001e821256.cloud.techzone.ibm.com"/>
-    <variable name="port" value="443"/>
-
-    <!-- 
-        sslCipherSuite="ANY"
-    -->
+    <!-- https://www.ibm.com/docs/en/ibm-mq/9.3?topic=jms-tls-cipherspecs-ciphersuites-in-mq-classes -->
+    <variable name="sslCipherSuite" value="*TLS12ORHIGHER"/>
 
     <jmsConnectionFactory jndiName="jms/mqConnectionFactory" connectionManagerRef="connectionManager">
         <properties.wmqjmsra
             channel="${channel}"
             hostName="${hostname}"
-            sslCipherSuite="TLS_RSA_WITH_3DES_EDE_CBC_SHA"   
+            sslCipherSuite="${sslCipherSuite}"   
             port="${port}"
             queueManager="${queuemanager}"
             transportType="CLIENT"
@@ -34,6 +28,7 @@
         <properties.wmqjmsra
             channel="${channel}"
             hostName="${hostname}"
+            sslCipherSuite="${sslCipherSuite}"   
             port="${port}"
             queueManager="${queuemanager}"
             transportType="CLIENT"
