@@ -8,6 +8,7 @@ LABEL org.opencontainers.image.source https://github.com/Nordic-MVP-GitOps-Repos
 #USER 1001
 
 COPY --chown=1001:0 /src/main/liberty/config /config
+COPY --chown=1001:0 build/wlp/lib/wmq.jmsra-9.3.5.0.rar /liberty/lib
 
 RUN features.sh
 

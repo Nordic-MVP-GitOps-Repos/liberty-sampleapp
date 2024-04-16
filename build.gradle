@@ -4,6 +4,7 @@ plugins {
 }
 
 version '1.0-SNAPSHOT'
+
 group 'com.ibm.ce'
 
 sourceCompatibility = 8
@@ -11,6 +12,16 @@ targetCompatibility = 8
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
+}
+
+task copyMQToLibertyLib() {
+	doLast {
+		copy {
+			from configurations.runtimeClasspath
+			into "$buildDir/wlp/lib"
+			include "wmq*"
+		}
+	}
 }
 
 repositories {
@@ -25,6 +36,9 @@ dependencies {
     providedCompile 'javax.jws:javax.jws-api:1.1'
     providedCompile 'javax.xml.bind:jaxb-api:2.2.4'
     implementation 'org.apache.kafka:kafka-clients:3.7.0'
+    implementation 'com.ibm.mq:wmq.jmsra:9.3.5.0'
 }
 
 clean.dependsOn 'libertyStop'
+
+defaultTasks 'build', 'copyMQToLibertyLib'

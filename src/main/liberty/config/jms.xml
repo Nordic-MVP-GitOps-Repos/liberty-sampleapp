@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<server>
+
+    <resourceAdapter id="wmqjmsra" location="${wlp.install.dir}/lib/wmq.jmsra-9.3.5.0.rar" />
+
+    <connectionManager id="connectionManager" maxPoolSize="10"/>
+
+    <variable name="queuemanager" value="NATIVEHAQM" />
+    <variable name="channel" value="HAQMCHL"/>
+    <variable name="hostname" value="native-ha-qm-ibm-mq.mq.svc.cluster.local"/>
+    <variable name="port" value="1414"/>
+
+    <jmsConnectionFactory jndiName="jms/mqConnectionFactory" connectionManagerRef="connectionManager">
+        <properties.wmqjmsra
+            channel="${channel}"
+            hostName="${hostname}"
+            port="${port}"
+            queueManager="${queuemanager}"
+            transportType="CLIENT"
+        />
+    </jmsConnectionFactory>
+
+    <jmsActivationSpec id="libertymq/SampleListenerMDB">
+        <properties.wmqjmsra
+            channel="${channel}"
+            hostName="${hostname}"
+            port="${port}"
+            queueManager="${queuemanager}"
+            transportType="CLIENT"
+            destinationRef="jms/queue1"
+            destinationType="jakarta.jms.Queue"
+        />
+    </jmsActivationSpec>
+
+    <jmsQueue id="jms/queue1" jndiName="jms/queue1">
+        <properties.wmqjmsra baseQueueName="QUEUE1" />
+    </jmsQueue>
+</server>
