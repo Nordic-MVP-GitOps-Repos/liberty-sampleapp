@@ -17,8 +17,12 @@ public class Producer {
     @Resource(lookup = "jms/queue1")
     Queue queue;
 
-    public void sendMessage(String message) throws Exception {
+    public void sendMessage(String message) {
         context.createProducer().send(queue, message);
-        System.out.println("Sent message.");
+        try {
+            System.out.println("Sent message.");            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
