@@ -37,6 +37,7 @@ dependencies {
     providedCompile 'javax.xml.bind:jaxb-api:2.2.4'
     implementation 'org.apache.kafka:kafka-clients:3.7.0'
     implementation 'com.ibm.mq:wmq.jmsra:9.3.5.0'
+    implementation 'org.slf4j:slf4j-simple:1.7.36'
 }
 
 clean.dependsOn 'libertyStop'

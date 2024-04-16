@@ -23,7 +23,7 @@
         <properties.wmqjmsra
             channel="${channel}"
             hostName="${hostname}"
-            sslCipherSuite="ANY_TLS12_OR_HIGHER"   
+            sslCipherSuite="TLS_RSA_WITH_3DES_EDE_CBC_SHA"   
             port="${port}"
             queueManager="${queuemanager}"
             transportType="CLIENT"

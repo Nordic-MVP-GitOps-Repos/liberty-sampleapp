@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <server description="new server">
 
-    <!-- include location="jms.xml" / -->
+    <!--include location="jms.xml" /-->
 
     <!-- Enable features -->
     <featureManager>
@@ -49,6 +49,8 @@
     <!--logging traceSpecification="yoko.verbose=all"/-->
 
     <!--logging traceSpecification="com.ibm.ws.microprofile.config.impl.*=all"/-->
+
+    <logging traceSpecification="io.smallrye.*=all"/>
 
     <applicationManager autoExpand="true"/>
 
