@@ -1,7 +1,5 @@
 package com.ibm.ce.reactivemessaging;
 
-import java.util.concurrent.CompletionStage;
-
 import javax.ejb.EJB;
 import javax.enterprise.context.ApplicationScoped;
 
