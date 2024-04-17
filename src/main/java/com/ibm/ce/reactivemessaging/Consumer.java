@@ -11,6 +11,7 @@ import com.ibm.ce.jms.Producer;
 @ApplicationScoped
 public class Consumer {
 
+
     @EJB
     Producer jmsProducer;
     
@@ -18,7 +19,7 @@ public class Consumer {
     @Incoming("door")
     @Acknowledgment(Acknowledgment.Strategy.NONE)
     public void consumeDoorEvents(String string) {    
-        System.out.println("Received door event: " + string);  
+        System.out.println("Received Kafka door event: " + string);  
     
         try {
             jmsProducer.sendMessage(string);
@@ -26,6 +27,7 @@ public class Consumer {
             e.printStackTrace();
         }
     } 
+
       
     /**
      * Consume from DOOR.BADGEIN Kafka Topic
@@ -33,6 +35,6 @@ public class Consumer {
     @Incoming("order")
     @Acknowledgment(Acknowledgment.Strategy.NONE)
     public void consumeOrderEvents(String string)  {
-        System.out.println("Received order event: " + string);
+        System.out.println("Received Kafka order event: " + string);
     }
 }
