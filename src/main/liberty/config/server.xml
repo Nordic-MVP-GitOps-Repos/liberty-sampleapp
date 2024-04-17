@@ -3,7 +3,12 @@
 
     <include location="jms.xml" />
 
-    <!-- Enable features -->
+
+    <!--
+        Enable features.
+
+        See https://www.ibm.com/docs/en/was-liberty/base?topic=architecture-microprofile-programming-model-support for compatible versions
+    -->
     <featureManager>
         <feature>jakartaee-8.0</feature>
         <feature>microProfile-1.4</feature>

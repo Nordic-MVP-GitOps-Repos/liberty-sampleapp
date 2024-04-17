@@ -19,7 +19,7 @@ import javax.ws.rs.core.MediaType;
 public class TimeServiceImpl implements TimeService {
 
     private static final long SECONDS_IN_24HRS = 24*60*60L;
-
+    
     @Override
     @GET
     @Path("now")
