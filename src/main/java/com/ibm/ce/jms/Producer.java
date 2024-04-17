@@ -25,7 +25,5 @@ public class Producer {
         JMSProducer jmsProducer = context.createProducer();
         jmsProducer.send(queue1, message);
         jmsProducer.send(queue2, message);
-
-        System.out.println("Sent JMS Messages.");
     }
 }

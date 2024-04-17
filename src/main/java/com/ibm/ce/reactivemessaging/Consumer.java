@@ -23,6 +23,7 @@ public class Consumer {
     
         try {
             jmsProducer.sendMessage(string);
+            System.out.println("Sent JMS Messages.");
         } catch (Exception e) {
             e.printStackTrace();
         }
