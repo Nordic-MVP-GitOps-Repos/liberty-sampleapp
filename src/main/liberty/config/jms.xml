@@ -3,7 +3,7 @@
 
     <resourceAdapter id="wmqjmsra" location="${wlp.install.dir}/lib/wmq.jmsra-9.3.5.0.rar" />
 
-    <connectionManager id="connectionManager" maxPoolSize="10"/>
+    <connectionManager id="connectionManager" maxPoolSize="10" />
 
     <variable name="connectionNameList" value="native-ha-qm-ibm-mq-qm-mq.apps.6602d6121b0194001e821256.cloud.techzone.ibm.com(443)"/>
     <variable name="channel" value="HAQMCHL"/>
@@ -18,6 +18,18 @@
     <jmsConnectionFactory jndiName="jms/mqConnectionFactory" connectionManagerRef="connectionManager">
         <properties.wmqjmsra
             connectionNameList="${connectionNameList}"
+            channel="${channel}"
+            queueManager="${queuemanager}"
+            sslCipherSuite="${sslCipherSuite}"
+            applicationName="${applicationName}"
+            transportType="${transportType}"
+            reconnectionRetryCount="1024"
+        />
+    </jmsConnectionFactory>
+
+    <jmsConnectionFactory jndiName="jms/serviceMqConnectionFactory" connectionManagerRef="connectionManager">
+        <properties.wmqjmsra
+            connectionNameList="native-ha-qm-ibm-mq.mq.svc.cluster.local(1414)"
             channel="${channel}"
             queueManager="${queuemanager}"
             sslCipherSuite="${sslCipherSuite}"
