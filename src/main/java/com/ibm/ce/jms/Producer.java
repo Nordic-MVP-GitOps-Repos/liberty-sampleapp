@@ -12,7 +12,8 @@ import javax.jms.Queue;
 public class Producer {
     
     @Inject
-    @JMSConnectionFactory("jms/mqConnectionFactory")
+    //@JMSConnectionFactory("jms/mqConnectionFactory")
+    @JMSConnectionFactory("jms/serviceMqConnectionFactory")
     JMSContext context;
 
     @Resource(lookup = "jms/queue1")
