@@ -23,6 +23,7 @@
             sslCipherSuite="${sslCipherSuite}"
             applicationName="${applicationName}"
             transportType="${transportType}"
+            reconnectionRetryCount="1024"
         />
     </jmsConnectionFactory>
 
@@ -37,6 +38,7 @@
             transportType="${transportType}"
             destinationRef="jms/queue2"
             destinationType="javax.jms.Queue"
+            reconnectionRetryCount="1024"
         />
     </jmsActivationSpec>
 
