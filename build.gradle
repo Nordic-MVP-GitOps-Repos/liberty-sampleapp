@@ -28,12 +28,11 @@ repositories {
     mavenCentral()
 }
 
-// https://github.com/OpenLiberty/ci.gradle/blob/main/docs/installLiberty.md#using-maven-artifact
 dependencies {
-    libertyRuntime group: 'com.ibm.websphere.appserver.runtime', name: 'wlp-webProfile8', version: '24.0.0.3'
-}
 
-dependencies {
+    // https://github.com/OpenLiberty/ci.gradle/blob/main/docs/installLiberty.md#using-maven-artifact
+    //libertyRuntime group: 'com.ibm.websphere.appserver.runtime', name: 'wlp-webProfile8', version: '24.0.0.3'
+
     // provided dependencies
     providedCompile 'jakarta.platform:jakarta.jakartaee-api:8.0.0'
     providedCompile 'org.eclipse.microprofile:microprofile:4.1' 
