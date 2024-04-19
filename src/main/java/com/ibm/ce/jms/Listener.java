@@ -5,7 +5,6 @@ import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageListener;
 
-
 @MessageDriven(name = "ListenerMDB")
 public class Listener implements MessageListener {
 

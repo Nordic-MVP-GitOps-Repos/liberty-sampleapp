@@ -14,13 +14,13 @@ public class Producer {
     @Inject
     //@JMSConnectionFactory("jms/mqConnectionFactory")
     @JMSConnectionFactory("jms/serviceMqConnectionFactory")
-    JMSContext context;
-
+    private JMSContext context;
+    
     @Resource(lookup = "jms/queue1")
-    Queue queue1;
+    private Queue queue1;
 
     @Resource(lookup = "jms/queue2")
-    Queue queue2;
+    private Queue queue2;
 
     public void sendMessage(String message) {
         JMSProducer jmsProducer = context.createProducer();

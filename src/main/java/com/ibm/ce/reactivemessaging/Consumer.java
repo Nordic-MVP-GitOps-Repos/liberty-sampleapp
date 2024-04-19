@@ -13,7 +13,7 @@ import com.ibm.ce.jms.Producer;
 public class Consumer {
 
     @EJB
-    Producer jmsProducer;
+    private Producer jmsProducer;
     
     /**
      * Consume from DOOR.BADGEIN Kafka Topic

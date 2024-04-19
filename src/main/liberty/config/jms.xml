@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <server>
 
-    <resourceAdapter id="wmqjmsra" location="${wlp.install.dir}/lib/wmq.jmsra-9.3.5.0.rar" />
+    <!--
+        See:
+
+        https://www.ibm.com/docs/en/was-liberty/nd?topic=dmal-deploying-jms-applications-liberty-use-mq-messaging-provider
+        
+        https://www.ibm.com/docs/en/ibm-mq/9.3?topic=adapter-liberty-mq-resource
+
+        https://www.ibm.com/docs/en/ibm-mq/9.3?topic=adapter-configuration-resourceadapter-object-properties#q031660___libconfig
+
+    -->
+
+    <!-- https://www.ibm.com/docs/en/ibm-mq/9.3?topic=adapter-configuration-resourceadapter-object-properties-->
+    <wmqJmsClient supportMQExtensions="true" logWriterEnabled="true" reconnectionRetryCount="100"/>
+
+    <variable name="wmqJmsClient.rar.location" value="${shared.resource.dir}/wmq.jmsra-9.3.5.0.rar"/>
 
     <connectionManager id="connectionManager" maxPoolSize="10" />
 
@@ -15,33 +29,34 @@
     <variable name="sslCipherSuite" value="*TLS12ORHIGHER"/>
 
     <!-- https://www.ibm.com/docs/en/ibm-mq/9.3?topic=adapter-configuring-resource-outbound-communication -->
-    <jmsConnectionFactory jndiName="jms/mqConnectionFactory" connectionManagerRef="connectionManager">
-        <properties.wmqjmsra
+    <!--
+    <jmsConnectionFactory jndiName="jms/mqConnectionFactory" connectionManagerRef="connectionManager" >
+        <properties.wmqJms
             connectionNameList="${connectionNameList}"
             channel="${channel}"
             queueManager="${queuemanager}"
             sslCipherSuite="${sslCipherSuite}"
             applicationName="${applicationName}"
             transportType="${transportType}"
-            reconnectionRetryCount="1024"
+            
         />
     </jmsConnectionFactory>
+    -->
 
     <jmsConnectionFactory jndiName="jms/serviceMqConnectionFactory" connectionManagerRef="connectionManager">
-        <properties.wmqjmsra
+        <properties.wmqJms
             connectionNameList="native-ha-qm-ibm-mq.mq.svc.cluster.local(1414)"
             channel="${channel}"
             queueManager="${queuemanager}"
             sslCipherSuite="${sslCipherSuite}"
             applicationName="${applicationName}"
             transportType="${transportType}"
-            reconnectionRetryCount="1024"
         />
     </jmsConnectionFactory>
 
     <!-- https://www.ibm.com/docs/en/ibm-mq/9.3?topic=adapter-configuring-resource-inbound-communication -->
     <jmsActivationSpec id="liberty-sampleapp-1.0-SNAPSHOT/ListenerMDB" autoStart="true">
-        <properties.wmqjmsra
+        <properties.wmqJms
             connectionNameList="${connectionNameList}"
             channel="${channel}"
             queueManager="${queuemanager}"
@@ -50,15 +65,19 @@
             transportType="${transportType}"
             destinationRef="jms/queue2"
             destinationType="javax.jms.Queue"
-            reconnectionRetryCount="1024"
+
         />
     </jmsActivationSpec>
 
     <jmsQueue id="jms/queue1" jndiName="jms/queue1">
-        <properties.wmqjmsra baseQueueName="QUEUE1" />
+        <properties.wmqJms baseQueueName="QUEUE1" />
     </jmsQueue>
 
     <jmsQueue id="jms/queue2" jndiName="jms/queue2">
-        <properties.wmqjmsra baseQueueName="QUEUE2" />
+        <properties.wmqJms baseQueueName="QUEUE2" />
     </jmsQueue>
+
+
+    <!-- logging traceSpecification="JMSApi=all:WAS.j2c=all:"/ -->
+
 </server>

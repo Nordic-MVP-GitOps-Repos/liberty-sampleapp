@@ -18,7 +18,7 @@ task copyMQToLibertyLib() {
 	doLast {
 		copy {
 			from configurations.runtimeClasspath
-			into "$buildDir/wlp/lib"
+			into "$buildDir/wlp/usr/shared/resources"
 			include "wmq*"
 		}
 	}
@@ -28,6 +28,11 @@ repositories {
     mavenCentral()
 }
 
+// https://github.com/OpenLiberty/ci.gradle/blob/main/docs/installLiberty.md#using-maven-artifact
+dependencies {
+    libertyRuntime group: 'com.ibm.websphere.appserver.runtime', name: 'wlp-webProfile8', version: '24.0.0.3'
+}
+
 dependencies {
     // provided dependencies
     providedCompile 'jakarta.platform:jakarta.jakartaee-api:8.0.0'
@@ -35,8 +40,9 @@ dependencies {
     providedCompile 'org.eclipse.microprofile.reactive.messaging:microprofile-reactive-messaging-api:1.0'
     providedCompile 'javax.jws:javax.jws-api:1.1'
     providedCompile 'javax.xml.bind:jaxb-api:2.2.4'
+    providedCompile 'com.ibm.mq:wmq.jmsra:9.3.5.0'
+
     implementation 'org.apache.kafka:kafka-clients:3.7.0'
-    implementation 'com.ibm.mq:wmq.jmsra:9.3.5.0'
     implementation 'org.slf4j:slf4j-simple:1.7.36'
 
     testImplementation 'com.ibm.mq:com.ibm.mq.allclient:9.3.5.0'

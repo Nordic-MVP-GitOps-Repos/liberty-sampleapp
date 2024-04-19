@@ -13,8 +13,9 @@
         <feature>jakartaee-8.0</feature>
         <feature>microProfile-1.4</feature>
         <feature>mpReactiveMessaging-1.0</feature>
-        <feature>ejbRemote-3.2</feature>
+        <!--feature>ejbRemote-3.2</feature-->
         <feature>jaxws-2.2</feature>
+        <feature>wmqJmsClient-2.0</feature>
     </featureManager>
 
     <!-- This template enables security. To get the full use of all the capabilities, a keystore and user registry are required. -->
@@ -55,5 +56,7 @@
     <!--logging traceSpecification="com.ibm.ws.microprofile.config.impl.*=all"/-->
 
     <applicationManager autoExpand="true"/>
+
+    <orb id="defaultOrb" orbSSLInitTimeout="120" />
 
 </server>
