@@ -31,7 +31,7 @@ repositories {
 dependencies {
 
     // https://github.com/OpenLiberty/ci.gradle/blob/main/docs/installLiberty.md#using-maven-artifact
-    //libertyRuntime group: 'com.ibm.websphere.appserver.runtime', name: 'wlp-webProfile8', version: '24.0.0.3'
+    libertyRuntime group: 'com.ibm.websphere.appserver.runtime', name: 'wlp-webProfile8', version: '24.0.0.3'
 
     // provided dependencies
     providedCompile 'jakarta.platform:jakarta.jakartaee-api:8.0.0'

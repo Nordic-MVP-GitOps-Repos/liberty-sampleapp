@@ -8,14 +8,15 @@ import javax.jms.JMSContext;
 import javax.jms.JMSProducer;
 import javax.jms.Queue;
 
+
 @Stateless
 public class Producer {
     
-    @Inject
-    //@JMSConnectionFactory("jms/mqConnectionFactory")
-    @JMSConnectionFactory("jms/serviceMqConnectionFactory")
-    private JMSContext context;
     
+    @Inject
+    @JMSConnectionFactory("jms/mqConnectionFactory")
+    private JMSContext context;    
+
     @Resource(lookup = "jms/queue1")
     private Queue queue1;
 

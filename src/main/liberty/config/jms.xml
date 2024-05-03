@@ -12,14 +12,20 @@
 
     -->
 
-    <!-- https://www.ibm.com/docs/en/ibm-mq/9.3?topic=adapter-configuration-resourceadapter-object-properties-->
+    <!-- 
+        https://www.ibm.com/docs/en/ibm-mq/9.3?topic=adapter-configuration-resourceadapter-object-properties
+    -->
     <wmqJmsClient supportMQExtensions="true" logWriterEnabled="true" reconnectionRetryCount="100"/>
 
     <variable name="wmqJmsClient.rar.location" value="${shared.resource.dir}/wmq.jmsra-9.3.5.0.rar"/>
 
     <connectionManager id="connectionManager" maxPoolSize="10" />
 
-    <variable name="connectionNameList" value="${CONNECTIONNAMELIST}" defaultValue="native-ha-qm-ibm-mq-qm-mq.apps.6602d6121b0194001e821256.cloud.techzone.ibm.com(443)"/>
+    <!-- 
+        Read connectionNameList from environment variable or use default.
+    -->
+    <variable name="connectionNameList" value="${CONNECTION_NAME_LIST}" />
+
     <variable name="channel" value="HAQMCHL"/>
     <variable name="queuemanager" value="NATIVEHAQM" />
     <variable name="transportType" value="CLIENT"/>
@@ -28,8 +34,9 @@
     <!-- https://www.ibm.com/docs/en/ibm-mq/9.3?topic=jms-tls-cipherspecs-ciphersuites-in-mq-classes -->
     <variable name="sslCipherSuite" value="*TLS12ORHIGHER"/>
 
-    <!-- https://www.ibm.com/docs/en/ibm-mq/9.3?topic=adapter-configuring-resource-outbound-communication -->
-    <!--
+    <!-- 
+        https://www.ibm.com/docs/en/ibm-mq/9.3?topic=adapter-configuring-resource-outbound-communication 
+    -->
     <jmsConnectionFactory jndiName="jms/mqConnectionFactory" connectionManagerRef="connectionManager" >
         <properties.wmqJms
             connectionNameList="${connectionNameList}"
@@ -41,20 +48,10 @@
             
         />
     </jmsConnectionFactory>
+
+    <!-- 
+        https://www.ibm.com/docs/en/ibm-mq/9.3?topic=adapter-configuring-resource-inbound-communication 
     -->
-
-    <jmsConnectionFactory jndiName="jms/serviceMqConnectionFactory" connectionManagerRef="connectionManager">
-        <properties.wmqJms
-            connectionNameList="native-ha-qm-ibm-mq.mq.svc.cluster.local(1414)"
-            channel="${channel}"
-            queueManager="${queuemanager}"
-            sslCipherSuite="${sslCipherSuite}"
-            applicationName="${applicationName}"
-            transportType="${transportType}"
-        />
-    </jmsConnectionFactory>
-
-    <!-- https://www.ibm.com/docs/en/ibm-mq/9.3?topic=adapter-configuring-resource-inbound-communication -->
     <jmsActivationSpec id="liberty-sampleapp-1.0-SNAPSHOT/ListenerMDB" autoStart="true">
         <properties.wmqJms
             connectionNameList="${connectionNameList}"
@@ -77,7 +74,5 @@
         <properties.wmqJms baseQueueName="QUEUE2" />
     </jmsQueue>
 
-
     <!-- logging traceSpecification="JMSApi=all:WAS.j2c=all:"/ -->
-
 </server>

@@ -3,7 +3,6 @@
 
     <include location="jms.xml" />
 
-
     <!--
         Enable features.
 
