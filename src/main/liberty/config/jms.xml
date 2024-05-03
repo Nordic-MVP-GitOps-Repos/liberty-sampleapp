@@ -19,7 +19,7 @@
 
     <connectionManager id="connectionManager" maxPoolSize="10" />
 
-    <variable name="connectionNameList" defaultValue="native-ha-qm-ibm-mq-qm-mq.apps.6602d6121b0194001e821256.cloud.techzone.ibm.com(443)"/>
+    <variable name="connectionNameList" value="${CONNECTIONNAMELIST}" defaultValue="native-ha-qm-ibm-mq-qm-mq.apps.6602d6121b0194001e821256.cloud.techzone.ibm.com(443)"/>
     <variable name="channel" value="HAQMCHL"/>
     <variable name="queuemanager" value="NATIVEHAQM" />
     <variable name="transportType" value="CLIENT"/>
