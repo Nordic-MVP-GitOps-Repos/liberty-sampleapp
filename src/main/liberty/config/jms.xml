@@ -22,7 +22,7 @@
     <connectionManager id="connectionManager" maxPoolSize="10" />
 
     <!-- 
-        Read connectionNameList from environment variable or use default.
+        Read connectionNameList from environment variable.
     -->
     <variable name="connectionNameList" value="${CONNECTION_NAME_LIST}" />
 
@@ -45,7 +45,6 @@
             sslCipherSuite="${sslCipherSuite}"
             applicationName="${applicationName}"
             transportType="${transportType}"
-            
         />
     </jmsConnectionFactory>
 
@@ -62,7 +61,6 @@
             transportType="${transportType}"
             destinationRef="jms/queue2"
             destinationType="javax.jms.Queue"
-
         />
     </jmsActivationSpec>
 
